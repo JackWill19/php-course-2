@@ -1,7 +1,7 @@
 <?php
+// require_once 'Transactions.php'; // Including the transactions.php file so transaction can be called in this file
+/* CLASSES AND OBJECTS 
 
-/* CLASSES AND OBJECTS */
-require_once 'Transactions.php'; // Including the transactions.php file so transaction can be called in this file
 
 // $transaction = (new Transaction(100, 'Transaction 1')); //Creating a variable from the class (transaction) in the transactions.php file
 // $transaction->addTax(8);
@@ -16,6 +16,7 @@ $transaction2 = (new Transaction(200, 'Transaction 2')) // You can make multiple
     ->addTax(8) //Method Chaining
     ->addDiscount(15)
     ->getAmount();
+    
 // $transaction->amount = 15; // You can target and edit the value of objects within a class
 
 // var_dump($transaction->amount); // to access the object within the class you use $variable->class-object
@@ -23,3 +24,13 @@ $transaction2 = (new Transaction(200, 'Transaction 2')) // You can make multiple
 // var_dump($transaction->getAmount()); // Using a public function to access a private objects
 
 var_dump($transaction1, $transaction2);
+
+// Nullsafe Operators
+
+require_once 'Transactions.php';
+require_once 'Customer.php';
+require_once 'PaymentProfile.php';
+
+$transaction = new Transaction(2, 'test');
+
+echo $transaction->getCustomer()?->getPaymentProfile()?->id ?? 'foo';*/

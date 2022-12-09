@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+/*
 
 // Class is blueprint (PLans for a house for example)
 // Object is instace of blueprint (The house itself)
@@ -21,8 +22,8 @@ class Transaction { // two main features of a transaction should be the amount a
         return $this;
     }
 
-    /* The method subtracts the discounted amount from the original transaction amount, and then returns the Transaction object itself. This allows you to call multiple methods on the same onject
-       This allows the method to be used in a "chainable" way, where multiple methods can be called on the same object in a single statement. */
+    // The method subtracts the discounted amount from the original transaction amount, and then returns the Transaction object itself. This allows you to call multiple methods on the same onject
+    // This allows the method to be used in a "chainable" way, where multiple methods can be called on the same object in a single statement. 
 
     public function addDiscount(float $rate): Transaction{
         $this->amount -= $this->amount * $rate / 100;
@@ -32,5 +33,20 @@ class Transaction { // two main features of a transaction should be the amount a
     public function getAmount(): float {
         return $this->amount;
         return $this;
+    }
+}
+
+*/
+
+class Transaction{
+    private ?Customer $customer = null;
+
+    public function __construct(
+        private float $amount, 
+        private string $description){  
+        }
+
+    public function getCustomer(): ?Customer {
+        return $this->customer;
     }
 }
