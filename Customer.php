@@ -1,9 +1,9 @@
 <?php
 
-class Customer {
-    private ?PaymentProfile $paymentProfile = null;
+// class Customer {
+//     private ?PaymentProfile $paymentProfile = null;
 
-    public function getPaymentProfile(): ?PaymentProfile {
-        return $this->paymentProfile;
-    }
-}
+//     public function getPaymentProfile(): ?PaymentProfile {
+//         return $this->pay;
+//     }
+// }

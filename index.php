@@ -34,3 +34,24 @@ require_once 'PaymentProfile.php';
 $transaction = new Transaction(2, 'test');
 
 echo $transaction->getCustomer()?->getPaymentProfile()?->id ?? 'foo';*/
+
+// NAMESPACE TUTORIAL
+// A way to organize code into logical groups and prevent naming conflicts between different code modules
+// A namespace is a top-level container for classes, functions, and constants, and it provides a way to avoid naming collisions between code from different sources.
+// Typically match namespace with folder structure
+
+require_once 'PaymentGateway/Stripe/Transaction.php'; // If you try to require two files of the same name you will get an error
+require_once 'PaymentGateway/Paddle/Transaction.php'; // Its the same if you try to declare different functions with the same name in different files
+require_once 'PaymentGateway/Paddle/CustomerProfile.php';
+require_once 'PaymentGateway/Paddle/DateTime.php';
+require_once 'Notification/Email.php';
+
+
+// Because different namespaces have been used, php can now tell the difference between the two same-named classes
+
+// var_dump(new PaymentGateway\Paddle\Transaction()); // How to call a class with a specific namespace (** namespace\class() **)
+
+// You dont have to use ** new PaymentGateway\Paddle\Transaction() ** everytime, just use (** use PaymentGateway\Stripe\Transaction; **) to simply import the class from the file
+use PaymentGateway\Paddle\Transaction;
+var_dump(new Transaction()); // How to call a class with a specific namespace (** namespace\class() **)
+

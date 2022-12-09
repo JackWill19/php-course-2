@@ -38,15 +38,15 @@ class Transaction { // two main features of a transaction should be the amount a
 
 */
 
-class Transaction{
-    private ?Customer $customer = null;
+// class Transaction{
+//     private ?Customer $customer = null;
 
-    public function __construct(
-        private float $amount, 
-        private string $description){  
-        }
+//     public function __construct(
+//         private float $amount, 
+//         private string $description){  
+//         }
 
-    public function getCustomer(): ?Customer {
-        return $this->customer;
-    }
-}
+//     public function getCustomer(): ?Customer {
+//         return $this->customer;
+//     }
+// }
