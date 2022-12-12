@@ -3,7 +3,7 @@
 declare(strict_types = 1);
 
 // namespace Jack; // Creating a namespace
-namespace PaymentGateway\Paddle; //Creating a namespace with subnamespaces
+namespace App\PaymentGateway\Paddle; //Creating a namespace with subnamespaces
 
 // use DateTime;
 
