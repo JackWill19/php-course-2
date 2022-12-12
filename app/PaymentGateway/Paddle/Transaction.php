@@ -5,6 +5,8 @@ declare(strict_types = 1);
 // namespace Jack; // Creating a namespace
 namespace App\PaymentGateway\Paddle; //Creating a namespace with subnamespaces
 
+use App\Enums\Status;
+
 // use DateTime;
 
 // class Transaction {
@@ -31,8 +33,19 @@ namespace App\PaymentGateway\Paddle; //Creating a namespace with subnamespaces
 // }
 
 class Transaction {
+    private string $status;
+
     public function __construct()
     {
-        
+        $this->setStatus(Status::PENDING);
+    }
+
+    public function setStatus(string $status): self
+    {
+        if(! isset(Status::ALL_STATUSES[$status])){ // Checks if the status passed has been set in All statuses array
+            throw new \InvalidArgumentException('Invalid Status'); // If not, display an error
+        }
+        $this->status = $status; // If it is set, set $this to status
+        return $this;
     }
 }

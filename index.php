@@ -76,16 +76,15 @@ echo $transaction->getCustomer()?->getPaymentProfile()?->id ?? 'foo';*/
  
 // });
 
-
-
-require __DIR__ . '/vendor/autoload.php';
-
+use App\Enums\Status;
 use App\PaymentGateway\Paddle\Transaction;
 
-$paddleTransaction = new Transaction();
+require __DIR__ . '/vendor/autoload.php'; // Requiring all loaded classes in the composer autoload file
 
-var_dump($paddleTransaction);
+$transaction = new Transaction();
 
-$id = new Ramsey\Uuid\UuidFactory();
+// echo $transaction::STATUS_PAID;  // :: is the scope resolution operator
+// echo $transaction::class; // Will echo out the fully qualified class name
 
-echo $id -> uuid4();
+$transaction->setStatus(Status::PAID);
+var_dump($transaction);
