@@ -52,6 +52,16 @@ require_once 'Notification/Email.php';
 // var_dump(new PaymentGateway\Paddle\Transaction()); // How to call a class with a specific namespace (** namespace\class() **)
 
 // You dont have to use ** new PaymentGateway\Paddle\Transaction() ** everytime, just use (** use PaymentGateway\Stripe\Transaction; **) to simply import the class from the file
-use PaymentGateway\Paddle\Transaction;
-var_dump(new Transaction()); // How to call a class with a specific namespace (** namespace\class() **)
 
+// var_dump(new Transaction()); // How to call a class with a specific namespace (** namespace\class() **)
+
+// use PaymentGateway\Paddle\Transaction as PaddleTransaction; // Importing two classses with the same name, to fix this we need to alias one of them
+// use PaymentGateway\Stripe\Transaction as StripeTransaction; // Using 'as alias-name'
+
+use PaymentGateway\Paddle\Transaction as PaddleTransaction; // Importing two classses with the same name, to fix this we need to alias one of them
+use PaymentGateway\Stripe\{Transaction, CustomerProfile}; // Calling multiple classes from the same file
+
+$paddleTransaction = new PaddleTransaction();
+$stripeTransaction = new Transaction();
+
+var_dump($paddleTransaction, $stripeTransaction);
