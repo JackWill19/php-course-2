@@ -32,20 +32,36 @@ use App\Enums\Status;
 //     return 'foo';
 // }
 
-class Transaction {
-    private string $status;
+// class Transaction {
+//     private string $status;
 
-    public function __construct()
-    {
-        $this->setStatus(Status::PENDING);
+//     public function __construct()
+//     {
+//         $this->setStatus(Status::PENDING);
+//     }
+
+//     public function setStatus(string $status): self
+//     {
+//         if(! isset(Status::ALL_STATUSES[$status])){ // Checks if the status passed has been set in All statuses array
+//             throw new \InvalidArgumentException('Invalid Status'); // If not, display an error
+//         }
+//         $this->status = $status; // If it is set, set $this to status
+//         return $this;
+//     }
+// }
+
+class Transaction {
+
+    public static int $count = 0;
+
+    public function __construct(
+        public float $amount,
+        public string $description
+    ) {   
+        self::$count++; //Self references the class in which it is being called
     }
 
-    public function setStatus(string $status): self
-    {
-        if(! isset(Status::ALL_STATUSES[$status])){ // Checks if the status passed has been set in All statuses array
-            throw new \InvalidArgumentException('Invalid Status'); // If not, display an error
-        }
-        $this->status = $status; // If it is set, set $this to status
-        return $this;
+    public function process() {
+        echo 'Processing paddle transaction...';
     }
 }

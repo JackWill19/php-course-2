@@ -77,14 +77,18 @@ echo $transaction->getCustomer()?->getPaymentProfile()?->id ?? 'foo';*/
 // });
 
 use App\Enums\Status;
+use App\DB;
 use App\PaymentGateway\Paddle\Transaction;
 
 require __DIR__ . '/vendor/autoload.php'; // Requiring all loaded classes in the composer autoload file
 
-$transaction = new Transaction();
-
 // echo $transaction::STATUS_PAID;  // :: is the scope resolution operator
 // echo $transaction::class; // Will echo out the fully qualified class name
 
-$transaction->setStatus(Status::PAID);
-var_dump($transaction);
+// $transaction->setStatus(Status::PAID);
+// var_dump($transaction);
+
+$transaction = new Transaction(25, 'Transaction 1');
+
+// var_dump(Transaction::$count); // accessing count in the transaction class
+$db = DB::getInstance([]);
