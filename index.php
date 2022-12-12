@@ -66,18 +66,18 @@ echo $transaction->getCustomer()?->getPaymentProfile()?->id ?? 'foo';*/
 
 // var_dump($paddleTransaction, $stripeTransaction);
 
-spl_autoload_register(function($path) { // Auto loader automatically loads your classes and traits that are not already included
-    // using the __DIR__ magic constant to get the current directory, appending '/../' to it to go up one directory level, and then using the lcfirst() function to convert the first character of the $class variable to lowercase. 
-    // The str_replace() function is then used to replace backslashes ('\\') in the $class variable with forward slashes ('/'), and the resulting string is appended to the directory path with '.php' added to the end.
-    $path = __DIR__ . '/' . lcfirst(str_replace('\\', '/', $path)) . '.php';
+// spl_autoload_register(function($path) { // Auto loader automatically loads your classes and traits that are not already included
+//     // using the __DIR__ magic constant to get the current directory, appending '/../' to it to go up one directory level, and then using the lcfirst() function to convert the first character of the $class variable to lowercase. 
+//     // The str_replace() function is then used to replace backslashes ('\\') in the $class variable with forward slashes ('/'), and the resulting string is appended to the directory path with '.php' added to the end.
+//     $path = __DIR__ . '/' . lcfirst(str_replace('\\', '/', $path)) . '.php';
 
-    require $path;
-    var_dump($path);
+//     require $path;
+//     var_dump($path);
  
-});
+// });
 
-use App\PaymentGateway\Paddle\Transaction;
+// use App\PaymentGateway\Paddle\Transaction;
 
-$paddleTransaction = new Transaction();
+// $paddleTransaction = new Transaction();
 
-var_dump($paddleTransaction);
+// var_dump($paddleTransaction);
