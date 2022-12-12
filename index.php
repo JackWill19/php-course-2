@@ -40,11 +40,11 @@ echo $transaction->getCustomer()?->getPaymentProfile()?->id ?? 'foo';*/
 // A namespace is a top-level container for classes, functions, and constants, and it provides a way to avoid naming collisions between code from different sources.
 // Typically match namespace with folder structure
 
-require_once 'PaymentGateway/Stripe/Transaction.php'; // If you try to require two files of the same name you will get an error
-require_once 'PaymentGateway/Paddle/Transaction.php'; // Its the same if you try to declare different functions with the same name in different files
-require_once 'PaymentGateway/Paddle/CustomerProfile.php';
-require_once 'PaymentGateway/Paddle/DateTime.php';
-require_once 'Notification/Email.php';
+// require_once '../app/PaymentGateway/Stripe/Transaction.php'; // If you try to require two files of the same name you will get an error
+// require_once '../app/PaymentGateway/Paddle/Transaction.php'; // Its the same if you try to declare different functions with the same name in different files
+// require_once '../app/PaymentGateway/Paddle/CustomerProfile.php';
+// require_once '../app/PaymentGateway/Paddle/DateTime.php';
+// require_once '../app/Notification/Email.php';
 
 
 // Because different namespaces have been used, php can now tell the difference between the two same-named classes
@@ -58,10 +58,25 @@ require_once 'Notification/Email.php';
 // use PaymentGateway\Paddle\Transaction as PaddleTransaction; // Importing two classses with the same name, to fix this we need to alias one of them
 // use PaymentGateway\Stripe\Transaction as StripeTransaction; // Using 'as alias-name'
 
-use PaymentGateway\Paddle\Transaction as PaddleTransaction; // Importing two classses with the same name, to fix this we need to alias one of them
-use PaymentGateway\Stripe\{Transaction, CustomerProfile}; // Calling multiple classes from the same file
+// use PaymentGateway\Paddle\Transaction as PaddleTransaction; // Importing two classses with the same name, to fix this we need to alias one of them
+// use PaymentGateway\Stripe\{Transaction, CustomerProfile}; // Calling multiple classes from the same file
 
-$paddleTransaction = new PaddleTransaction();
-$stripeTransaction = new Transaction();
+// $paddleTransaction = new PaddleTransaction();
+// $stripeTransaction = new Transaction();
 
-var_dump($paddleTransaction, $stripeTransaction);
+// var_dump($paddleTransaction, $stripeTransaction);
+
+spl_autoload_register(function($path) { // Auto loader automatically loads your classes and traits that are not already included
+    // using the __DIR__ magic constant to get the current directory, appending '/../' to it to go up one directory level, and then using the lcfirst() function to convert the first character of the $class variable to lowercase. 
+    // The str_replace() function is then used to replace backslashes ('\\') in the $class variable with forward slashes ('/'), and the resulting string is appended to the directory path with '.php' added to the end.
+    $path = __DIR__ . '/../' . lcfirst(str_replace('\\', '/', $path)) . '.php';
+
+    require $path;
+ 
+});
+
+use App\PaymentGateway\Paddle\Transaction;
+
+$paddleTransaction = new Transaction();
+
+var_dump($paddleTransactio);
