@@ -76,8 +76,16 @@ echo $transaction->getCustomer()?->getPaymentProfile()?->id ?? 'foo';*/
  
 // });
 
-// use App\PaymentGateway\Paddle\Transaction;
 
-// $paddleTransaction = new Transaction();
 
-// var_dump($paddleTransaction);
+require __DIR__ . '/vendor/autoload.php';
+
+use App\PaymentGateway\Paddle\Transaction;
+
+$paddleTransaction = new Transaction();
+
+var_dump($paddleTransaction);
+
+$id = new Ramsey\Uuid\UuidFactory();
+
+echo $id -> uuid4();
