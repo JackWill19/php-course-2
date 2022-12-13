@@ -110,14 +110,24 @@ echo $transaction->getCustomer()?->getPaymentProfile()?->id ?? 'foo';*/
 // $toaster->addSlice(('bread'));
 // $toaster->toastBagel();
 
+// require __DIR__ . '/vendor/autoload.php';
+
+// $fields = [
+//     new App\Text('baseText'),
+//     new App\Checkbox('baseCheckbox'),
+//     new App\Radio('baseRadio')
+// ];
+
+// foreach($fields as $field) {
+//     echo $field->render() . '<br />';
+// }
+
+// INTERFACES & POLYMORPHISM
+
 require __DIR__ . '/vendor/autoload.php';
 
-$fields = [
-    new App\Text('baseText'),
-    new App\Checkbox('baseCheckbox'),
-    new App\Radio('baseRadio')
-];
+$service = new App\DebtCollectionService();
+$rocky = new App\Rocky();
 
-foreach($fields as $field) {
-    echo $field->render() . '<br />';
-}
+echo $service->collectDebt(new App\Rocky()) . PHP_EOL;
+
