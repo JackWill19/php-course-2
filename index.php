@@ -76,11 +76,14 @@ echo $transaction->getCustomer()?->getPaymentProfile()?->id ?? 'foo';*/
  
 // });
 
-use App\Enums\Status;
-use App\DB;
-use App\PaymentGateway\Paddle\Transaction;
 
-require __DIR__ . '/vendor/autoload.php'; // Requiring all loaded classes in the composer autoload file
+// require __DIR__ . '/vendor/autoload.php'; // Requiring all loaded classes in the composer autoload file
+
+// use App\Enums\Status;
+// use App\DB;
+// use App\PaymentGateway\Paddle\Transaction;
+
+
 
 // echo $transaction::STATUS_PAID;  // :: is the scope resolution operator
 // echo $transaction::class; // Will echo out the fully qualified class name
@@ -88,7 +91,21 @@ require __DIR__ . '/vendor/autoload.php'; // Requiring all loaded classes in the
 // $transaction->setStatus(Status::PAID);
 // var_dump($transaction);
 
-$transaction = new Transaction(25, 'Transaction 1');
+// $transaction = new Transaction(25, 'Transaction 1');
 
 // var_dump(Transaction::$count); // accessing count in the transaction class
-$db = DB::getInstance([]);
+// $db = DB::getInstance([]);
+
+// INHERITANCE TOASTER EXAMPLE
+
+use App\Toaster;
+use App\ToasterPro;
+require __DIR__ . '/vendor/autoload.php';
+
+$toaster = new ToasterPro();
+
+$toaster->addSlice(('bread')); // Because size is set to 2, only 2 out of 3 will print
+$toaster->addSlice(('bread'));
+$toaster->addSlice(('bread'));
+$toaster->toastBagel();
+
