@@ -98,15 +98,26 @@ echo $transaction->getCustomer()?->getPaymentProfile()?->id ?? 'foo';*/
 
 // INHERITANCE TOASTER EXAMPLE
 
-use App\Toaster;
-use App\ToasterPro;
-use App\FancyOven;
+// use App\Toaster;
+// use App\ToasterPro;
+// use App\FancyOven;
+// require __DIR__ . '/vendor/autoload.php';
+
+// $toaster = new ToasterPro();
+
+// $toaster->addSlice(('bread')); // Because size is set to 2, only 2 out of 3 will print
+// $toaster->addSlice(('bread'));
+// $toaster->addSlice(('bread'));
+// $toaster->toastBagel();
+
 require __DIR__ . '/vendor/autoload.php';
 
-$toaster = new ToasterPro();
+$fields = [
+    new App\Text('baseText'),
+    new App\Checkbox('baseCheckbox'),
+    new App\Radio('baseRadio')
+];
 
-$toaster->addSlice(('bread')); // Because size is set to 2, only 2 out of 3 will print
-$toaster->addSlice(('bread'));
-$toaster->addSlice(('bread'));
-$toaster->toastBagel();
-
+foreach($fields as $field) {
+    echo $field->render() . '<br />';
+}
