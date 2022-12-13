@@ -15,6 +15,7 @@ class Toaster { // You can use 'final class Toaster' to make it so that this cla
     }
 
 // Function that compares if the amount of slices is less than the size if so add slice to slices
+// You can also add final to methods so they cannot be overwritten
     public function addSlice($slice): void { 
         if(count($this->slices) < $this->size){
             $this->slices[] = $slice;
