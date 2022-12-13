@@ -100,6 +100,7 @@ echo $transaction->getCustomer()?->getPaymentProfile()?->id ?? 'foo';*/
 
 use App\Toaster;
 use App\ToasterPro;
+use App\FancyOven;
 require __DIR__ . '/vendor/autoload.php';
 
 $toaster = new ToasterPro();
