@@ -136,14 +136,23 @@ echo $transaction->getCustomer()?->getPaymentProfile()?->id ?? 'foo';*/
 // Special methods which overrides php's default actions when certain actionsa are preformed on an object
 // All magic methods start with a double underscore __construct for example
 
+// require __DIR__ . '/vendor/autoload.php';
+
+// $invoice = new App\Invoice(15);
+
+// $invoice->amount = 35;
+
+// echo var_dump(isset($invoice->amount)) . '<br />'; // Returns true as amount has been set to 35
+
+// unset($invoice->amount); // Unsetting the value of $amount
+
+// var_dump($invoice) . '<br />'; // Returns false as amount has been unset
+
 require __DIR__ . '/vendor/autoload.php';
 
-$invoice = new App\Invoice(15);
+$invoice = new App\Invoice();
 
-$invoice->amount = 35;
+echo $invoice->process(1, 2, 3); // Because the process method doesnt exist in the Invoice class, the __call() method will be triggered
+                            // This will add the values to the arguments array 
 
-echo var_dump(isset($invoice->amount)) . '<br />'; // Returns true as amount has been set to 35
-
-unset($invoice->amount); // Unsetting the value of $amount
-
-var_dump(isset($invoice->amount)) . '<br />'; // Returns false as amount has been unset
+App\Invoice::process(1, 2, 3); // Calling a static method that doesnt exist so __callStatic() gets triggered
