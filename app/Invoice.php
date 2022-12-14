@@ -37,8 +37,8 @@ class Invoice {
     //     unset($this->data[$name]);
     // }
 
-    public function process() {
-        var_dump('process'); // If process exists and is public this will be ran rather than the call and callStatic methods
+    protected function process($amount, $description) {
+        var_dump($amount, $description); // If process exists and is public this will be ran rather than the call and callStatic methods
                              // If it is set to private or protected, then call or callStatic will be triggered
     }
 
@@ -47,6 +47,10 @@ class Invoice {
     // This method is triggered when code attempts to call a method that does not exist for an object.
     public function __call(string $name, array $arguments) 
     {
+        if(method_exists($this, $name)) { // Checks if the method exists regardless of its visibility modifier (public, private, protected)
+            call_user_func_array([$this, $name], $arguments);
+            $this->$name($arguments); // If it exists then run it
+        }
         echo var_dump($name, $arguments) . '<br />';
     }
 
