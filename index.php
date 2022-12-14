@@ -124,10 +124,26 @@ echo $transaction->getCustomer()?->getPaymentProfile()?->id ?? 'foo';*/
 
 // INTERFACES & POLYMORPHISM
 
+// require __DIR__ . '/vendor/autoload.php';
+
+// $service = new App\DebtCollectionService();
+// $rocky = new App\Rocky();
+
+// echo $service->collectDebt(new App\Rocky()) . PHP_EOL;
+
+// MAGIC METHODS
+
+// Special methods which overrides php's default actions when certain actionsa are preformed on an object
+// All magic methods start with a double underscore __construct for example
+
 require __DIR__ . '/vendor/autoload.php';
 
-$service = new App\DebtCollectionService();
-$rocky = new App\Rocky();
+$invoice = new App\Invoice(15);
 
-echo $service->collectDebt(new App\Rocky()) . PHP_EOL;
+$invoice->amount = 35;
 
+echo var_dump(isset($invoice->amount)) . '<br />'; // Returns true as amount has been set to 35
+
+unset($invoice->amount); // Unsetting the value of $amount
+
+var_dump(isset($invoice->amount)) . '<br />'; // Returns false as amount has been unset
