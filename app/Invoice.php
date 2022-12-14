@@ -65,14 +65,26 @@ class Invoice {
 
     // __toString()
     // Treats the object like a string, returns a string representation of the object
-    // public function __toString(): string {
-        // return 'hello'; // Will return hello
+    public function __toString(): string {
+        return 'hello'; // Will return hello
         // If you try to return something thats not a string like 1, it will still work unless you are in strict mode
-    // }
+    }
 
     // __invoke()
     // Treats the object like a function, defines what the object should do when it is called like a function
     public function __invoke() {
         echo var_dump('invoked');
+    }
+
+    private float $amount;
+    private int $id = 1;
+    private string $accountNumber = '0123456789';
+
+    public function __debugInfo()
+    {
+        return [
+            'id' => $this->id,
+            'accountNumber' => '****' . substr($this->accountNumber, -4), // Returns a new string of account number where the first 4 characters have been replaces with ****
+        ];
     }
 }

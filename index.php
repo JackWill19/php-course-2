@@ -163,6 +163,7 @@ $invoice = new App\Invoice();
 
 // var_dump($invoice instanceof Stringable);
 
-var_dump(is_callable(($invoice))); // Checks if you can call $invoice as a function
-$invoice(); // Here we call the class as a function, which will trigger the __invoke() method which we have set to print ('invoked')
-            // If __invoked() wasnt set then youd be thrown a fatal error
+// var_dump(is_callable(($invoice))); // Checks if you can call $invoice as a function
+// $invoice(); // Here we call the class as a function, which will trigger the __invoke() method which we have set to print ('invoked')
+//             // If __invoked() wasnt set then youd be thrown a fatal error
+
