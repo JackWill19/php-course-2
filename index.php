@@ -148,11 +148,21 @@ echo $transaction->getCustomer()?->getPaymentProfile()?->id ?? 'foo';*/
 
 // var_dump($invoice) . '<br />'; // Returns false as amount has been unset
 
+// require __DIR__ . '/vendor/autoload.php';
+
+// $invoice = new App\Invoice();
+
+// echo $invoice->process(1, 2, 3); // Because the process method doesnt exist in the Invoice class, the __call() method will be triggered
+//                             // This will add the values to the arguments array 
+
+// App\Invoice::process(1, 2, 3); // Calling a static method that doesnt exist so __callStatic() gets triggered
+
 require __DIR__ . '/vendor/autoload.php';
 
 $invoice = new App\Invoice();
 
-echo $invoice->process(1, 2, 3); // Because the process method doesnt exist in the Invoice class, the __call() method will be triggered
-                            // This will add the values to the arguments array 
+// var_dump($invoice instanceof Stringable);
 
-App\Invoice::process(1, 2, 3); // Calling a static method that doesnt exist so __callStatic() gets triggered
+var_dump(is_callable(($invoice))); // Checks if you can call $invoice as a function
+$invoice(); // Here we call the class as a function, which will trigger the __invoke() method which we have set to print ('invoked')
+            // If __invoked() wasnt set then youd be thrown a fatal error
